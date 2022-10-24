@@ -13,6 +13,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -22,5 +23,15 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": [
+    "node_modules",
+  ],
+  "baseUrl": "./",
+  "paths":{
+    "_root":["*","root"],
+    "_Contexts*":["src/Contexts/*", "src/Contexts"],
+    "_Compoments*":["src/Compoments/*", "src/Compoments"]
+
+  }
 }
