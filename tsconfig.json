@@ -31,7 +31,8 @@
   "paths":{
     "_root":["*","root"],
     "_Contexts*":["src/Contexts/*", "src/Contexts"],
-    "_Compoments*":["src/Compoments/*", "src/Compoments"]
+    "_Compoments*":["src/Compoments/*", "src/Compoments"],
+    "_Utils*":["src/Utils/*", "src/Utils"]
 
   }
 }
