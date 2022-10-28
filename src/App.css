@@ -15,13 +15,13 @@
 
 /* Navbar */
 
-.navbarContainer {
-  display: flex;
-  flex-direction: row;
-  height: 20%;
-  width: 100%;
-  background: blue;
-  
+.navbarMenuBox {
+margin-left: 10rem;
+}
+
+.logoImage{
+  height:100%;
+  width: 20%;
 }
 
 /* Landing Screen */
@@ -36,13 +36,13 @@
 
 /* Hyperlink */
 
-.hyperlink:link { text-decoration: none; }
+a:link { text-decoration: none; color: inherit;}
 
 
-.hyperlink:visited { text-decoration: none; }
+a:visited { text-decoration: none; color: inherit; }
 
 
-.hyperlink:hover { text-decoration: none; }
+a:hover { text-decoration: none;  color: inherit;}
 
 
-.hyperlink:active { text-decoration: none; }
+a:active { text-decoration: none;  color: inherit;}

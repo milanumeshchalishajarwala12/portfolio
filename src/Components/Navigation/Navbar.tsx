@@ -1,27 +1,3 @@
-// import React, { Fragment } from "react";
-// import { NavigationMenu } from "../../Enums";
-//
-
-// const Navbar = () => {
-//   return (
-//     <Fragment>
-//       <div className="navbarContainer">
-//         <div className="navbarLeft">{adminName}</div>
-//         <div className="navbarRight">
-//           {navigationMenuOptions.map((option: NavigationMenu) => {
-//             return (
-//               <Link to={translateNavigationOptionToUrlExtension(option)} className="">
-//                 {option}
-//               </Link>
-//             );
-//           })}
-//         </div>
-//       </div>
-//     </Fragment>
-//   );
-// };
-// export default Navbar;
-
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -38,13 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import {
   navigationMenuOptions,
+  navigationSettingsOptions,
   translateNavigationOptionToUrlExtension,
 } from "../../Utils/navigationUtils";
-import { NavigationMenu } from "../../Enums";
 import { Link } from "react-router-dom";
 
-// const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const adminName = "Milan Chalishajarwala";
 
 function ResponsiveAppBar() {
@@ -70,11 +44,18 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const logoNavButton = () => {
+    return (
+      <Link to={"/"}>
+        <text className="logoImage">{adminName}</text>
+      </Link>
+    );
+  };
+
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ background: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -83,17 +64,21 @@ function ResponsiveAppBar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "Caveat",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              fontSize: "1.5rem",
             }}
           >
-            {adminName}
+            {logoNavButton()}
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            className="navbarMenuBox"
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -134,7 +119,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -151,7 +135,15 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            {
+              <Link to={"/"}>
+                <img
+                  src={require("../../Assets/images/logo.png")}
+                  width={100}
+                  height={20}
+                />
+              </Link>
+            }
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navigationMenuOptions.map((option) => (
@@ -192,7 +184,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {navigationSettingsOptions.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>

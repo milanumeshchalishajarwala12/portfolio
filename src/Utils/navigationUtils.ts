@@ -1,10 +1,12 @@
-import { NavigationMenu } from "../Enums";
+import { NavigationMenu, NavigationSettings } from "../Enums";
 
 export const navigationMenuOptions = [
   NavigationMenu.HOME,
   NavigationMenu.ABOUT,
   NavigationMenu.BLOG,
 ];
+
+export const navigationSettingsOptions = [NavigationSettings.LOGOUT];
 
 export const translateNavigationOptionToUrlExtension = (option) => {
   switch (option) {
