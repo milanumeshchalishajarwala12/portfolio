@@ -1,4 +1,3 @@
-import React, { Fragment } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,15 +14,17 @@ import { ThemeProvider } from "./Contexts/ThemeContext";
 //@ts-ignore
 function App() {
   return (
-    <ThemeProvider>
-      <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingScreen />} />
-          <Route path="/about" element={<AboutScreen />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <div style={{ padding: "2rem" }}>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<LandingScreen />} />
+            <Route path="/about" element={<AboutScreen />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </div>
   );
 }
 

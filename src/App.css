@@ -15,13 +15,13 @@
 
 /* Navbar */
 
-.navbarContainer {
-  display: flex;
-  flex-direction: row;
-  height: 20%;
-  width: 100%;
-  background: blue;
-  
+.navbarMenuBox {
+margin-left: 10rem;
+}
+
+.logoImage{
+  height:100%;
+  width: 20%;
 }
 
 /* Landing Screen */
@@ -32,3 +32,17 @@
   width: 100%;
   height: 100%;
 }
+
+
+/* Hyperlink */
+
+a:link { text-decoration: none; color: inherit;}
+
+
+a:visited { text-decoration: none; color: inherit; }
+
+
+a:hover { text-decoration: none;  color: inherit;}
+
+
+a:active { text-decoration: none;  color: inherit;}
