@@ -3,7 +3,7 @@ import { NavigationMenu, NavigationSettings } from "../Enums";
 export const navigationMenuOptions = [
   NavigationMenu.HOME,
   NavigationMenu.ABOUT,
-  NavigationMenu.BLOG,
+  NavigationMenu.COLLECTIONS,
 ];
 
 export const navigationSettingsOptions = [NavigationSettings.LOGOUT];

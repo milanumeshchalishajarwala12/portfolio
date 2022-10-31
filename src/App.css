@@ -14,10 +14,10 @@
 }
 
 /* Navbar */
-
+/* 
 .navbarMenuBox {
 margin-left: 10rem;
-}
+} */
 
 .logoImage{
   height:100%;
@@ -46,3 +46,15 @@ a:hover { text-decoration: none;  color: inherit;}
 
 
 a:active { text-decoration: none;  color: inherit;}
+
+/* Carousel Image */
+.carouselImageContainer{
+padding: 2%;
+max-height: 40px;
+}
+
+.imageCarousel{
+
+  
+}
+

@@ -11,17 +11,22 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+
 import {
   navigationMenuOptions,
   navigationSettingsOptions,
   translateNavigationOptionToUrlExtension,
 } from "../../Utils/navigationUtils";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
+import { firebaseConfig } from "../../Utils/firebaseUtils";
+import { getStorage } from "firebase/storage";
+import { FirebaseContext } from "../../Contexts/FirebaseContext";
 
 const adminName = "Milan Chalishajarwala";
 
 function ResponsiveAppBar() {
+  const { user, emailId } = React.useContext(UserContext);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -52,6 +57,8 @@ function ResponsiveAppBar() {
     );
   };
 
+  const isSignedIn = user || false;
+
   return (
     <AppBar position="static" sx={{ background: "black" }}>
       <Container maxWidth="xl">
@@ -66,29 +73,20 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "Caveat",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".2rem",
               color: "inherit",
               textDecoration: "none",
-              fontSize: "1.5rem",
+              fontSize: "1.8rem",
             }}
           >
             {logoNavButton()}
           </Typography>
 
           <Box
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            sx={{ flexGrow: 1.5, display: { xs: "flex", md: "none" } }}
             className="navbarMenuBox"
           >
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+            <MenuIcon />
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -107,7 +105,7 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {navigationMenuOptions.map((option) => (
+              {navigationMenuOptions.map((option, key) => (
                 <Link
                   to={translateNavigationOptionToUrlExtension(option)}
                   className="hyperlink"
@@ -119,8 +117,10 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
+
+          {/* For smaller screens */}
           <Typography
-            variant="h5"
+            variant="subtitle2"
             noWrap
             component="a"
             href=""
@@ -128,22 +128,15 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "Caveat",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
+              fontSize: "1.25rem",
             }}
           >
-            {
-              <Link to={"/"}>
-                <img
-                  src={require("../../Assets/images/logo.png")}
-                  width={100}
-                  height={20}
-                />
-              </Link>
-            }
+            {logoNavButton()}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {navigationMenuOptions.map((option) => (
@@ -163,11 +156,14 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+            {!isSignedIn ? (
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+            ) : null}
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
